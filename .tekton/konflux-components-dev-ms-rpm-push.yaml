@@ -50,6 +50,22 @@ spec:
       #!/usr/bin/env bash
       set -euxo pipefail
       
+      CLEAN_SOURCE_URL=${SOURCE_ARTIFACT_URL#oci:}
+      
+      # Retry for up to 2 minutes (12 retries * 10 seconds)
+      for i in {1..12}; do
+        if skopeo inspect "docker://${CLEAN_SOURCE_URL}" > /dev/null; then
+          echo "Manifest is now available!"
+          break # Exit the loop and continue the script
+        fi
+        if [ "$i" -eq 12 ]; then
+          echo "Error: Timed out waiting for manifest."
+          exit 1
+        fi
+        echo "Manifest not found. Retrying in 10 seconds..."
+        sleep 10
+      done
+      
       echo "--- Preparing to generate spec and sources using Skopeo  changed---"
       
       mkdir -p original-repo
