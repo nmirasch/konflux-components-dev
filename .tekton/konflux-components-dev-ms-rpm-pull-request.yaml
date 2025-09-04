@@ -54,7 +54,7 @@ spec:
       echo "--- Preparing to generate spec and sources using Skopeo ---"
       
       mkdir -p original-repo
-      skopeo copy "oci-archive:$(SOURCE_ARTIFACT_URL)" "dir:./original-repo"
+      skopeo copy "oci-archive:${SOURCE_ARTIFACT_URL}" "dir:./original-repo"
       echo "Original repo extracted using Skopeo."
       
       cd original-repo
@@ -74,7 +74,7 @@ spec:
       cd ..
       echo "'sources' file created from gz."
       
-      MODIFIED_ARTIFACT_URL="$(OCI_STORAGE_URL).sources:pre-build-$(date +%s)"
+      MODIFIED_ARTIFACT_URL="${OCI_STORAGE_URL}.sources:pre-build-$(date +%s)"
       
       skopeo copy "dir:./workdir" "docker://${MODIFIED_ARTIFACT_URL}" --digestfile digest.txt
       
