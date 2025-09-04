@@ -57,11 +57,11 @@ spec:
       skopeo copy "oci-archive:$(params.source-artifact)" "dir:./original-repo"
       echo "Original repo extracted using Skopeo."
       
+      cd original-repo
       ./generic-pre-build-script.sh
       cd ..
       echo "Generator script executed successfully."
       
-      # 3. Stage the new source artifact in a clean 'workdir'
       mkdir workdir
       echo "Staging new artifact in ./workdir"
       
