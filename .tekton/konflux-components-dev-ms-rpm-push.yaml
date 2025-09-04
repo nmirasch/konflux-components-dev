@@ -71,7 +71,7 @@ spec:
       sha512sum *.tar.gz > sources
       cat sources
       cd ..
-      echo "'sources' file created."
+      echo "'sources' file created from gz."
       
       MODIFIED_ARTIFACT_URL="$(params.ociStorage).sources:pre-build-$(date +%s)"
       
