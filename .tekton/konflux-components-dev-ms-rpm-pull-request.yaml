@@ -45,7 +45,7 @@ spec:
     - aarch64
     - x86_64
   - name: script-environment-image
-    value: "quay.io/redhat-user-workloads/nmirasch-tenant/konflux-components-dev-builder@sha256-9efb61c49d241b3597c1289b42ecb5e9ba9de48126bf101c51b93bdadb1215e4"
+    value: "quay.io/redhat-user-workloads/nmirasch-tenant/konflux-components-dev-builder@sha256:9efb61c49d241b3597c1289b42ecb5e9ba9de48126bf101c51b93bdadb1215e4"
   - name: pre-build-script-content
     value: |
       #!/usr/bin/env bash
