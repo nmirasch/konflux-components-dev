@@ -54,7 +54,7 @@ spec:
       
       mkdir -p original-repo
       CLEAN_SOURCE_URL=${SOURCE_ARTIFACT_URL#oci:}
-      skopeo copy "docker://${CLEAN_SOURCE_URL}" "dir:./original-repo"
+      skopeo copy "oci-archive:$(params.source-artifact)" "dir:./original-repo"
       echo "Original repo extracted using Skopeo."
       
       cd original-repo
@@ -70,7 +70,7 @@ spec:
       
       echo "'sources' file created."
       MODIFIED_ARTIFACT_URL="${OCI_STORAGE_URL}.sources:pre-build-$(date +%s)"
-      skopeo copy "dir:./workdir" "docker://${MODIFIED_ARTIFACT_URL}" --digestfile digest.txt
+      skopeo copy "dir:./workdir" "oci-archive:${MODIFIED_ARTIFACT_URL}" --digestfile digest.txt
       
       REPO_URL=$(echo "${MODIFIED_ARTIFACT_URL}" | cut -d: -f1)
       NEW_ARTIFACT_WITH_DIGEST="${REPO_URL}@${NEW_DIGEST}"
