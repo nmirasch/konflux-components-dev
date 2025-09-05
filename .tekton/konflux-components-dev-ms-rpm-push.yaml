@@ -51,11 +51,9 @@ spec:
       set -euxo pipefail
       
       echo "--- Preparing to generate spec and sources using Skopeo ---"
-      echo "--- SOURCE_ARTIFACT_URL  ${SOURCE_ARTIFACT_URL} ---"
       
       mkdir -p original-repo
       CLEAN_SOURCE_URL=${SOURCE_ARTIFACT_URL#oci:}
-      echo "--- CLEAN_SOURCE_URL  ${CLEAN_SOURCE_URL} ---"
       skopeo copy "docker://${CLEAN_SOURCE_URL}" "dir:./original-repo"
       echo "Original repo extracted using Skopeo."
       
@@ -65,8 +63,6 @@ spec:
       echo "Generator script executed successfully."
       
       mkdir workdir
-      echo "Staging new artifact in ./workdir"
-      
       cp original-repo/rpms/microshift-gitops/microshift-gitops.spec ./workdir/
       cp original-repo/argo-cd-sources.tar.gz ./workdir/
       
@@ -78,12 +74,12 @@ spec:
       
       MODIFIED_ARTIFACT_URL="${OCI_STORAGE_URL}.sources:pre-build-$(date +%s)"
       skopeo copy "dir:./workdir" "docker://${MODIFIED_ARTIFACT_URL}" --digestfile digest.txt
-      
+    
       REPO_URL=$(echo "${MODIFIED_ARTIFACT_URL}" | cut -d: -f1)
       NEW_DIGEST=$(cat digest.txt)
       NEW_ARTIFACT_WITH_DIGEST="${REPO_URL}@${NEW_DIGEST}"
       echo "Pushed new source artifact to: ${NEW_ARTIFACT_WITH_DIGEST}"
-      
+    
       echo -n "${NEW_ARTIFACT_WITH_DIGEST}" | tee $(results.manipulated-source-artifact.path)
   pipelineRef:
     resolver: git

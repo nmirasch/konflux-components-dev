@@ -53,11 +53,8 @@ spec:
       
       echo "--- Preparing to generate spec and sources using Skopeo ---"
       
-      echo "--- SOURCE_ARTIFACT_URL  ${SOURCE_ARTIFACT_URL} ---"
-      
       mkdir -p original-repo
       CLEAN_SOURCE_URL=${SOURCE_ARTIFACT_URL#oci:}
-      echo "--- CLEAN_SOURCE_URL  ${CLEAN_SOURCE_URL} ---"
       skopeo copy "docker://${CLEAN_SOURCE_URL}" "dir:./original-repo"
       echo "Original repo extracted using Skopeo."
       
@@ -67,8 +64,6 @@ spec:
       echo "Generator script executed successfully."
       
       mkdir workdir
-      echo "Staging new artifact in ./workdir"
-      
       cp original-repo/rpms/microshift-gitops/microshift-gitops.spec ./workdir/
       cp original-repo/argo-cd-sources.tar.gz ./workdir/
       
