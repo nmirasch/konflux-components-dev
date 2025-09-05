@@ -60,7 +60,7 @@ spec:
       cd original-repo
       ./generic-pre-build-script.sh
       cd ..
-      echo "Generator script executed successfully."
+      echo "Generator script executed successfully. "
       
       mkdir workdir
       cp original-repo/rpms/microshift-gitops/microshift-gitops.spec ./workdir/
