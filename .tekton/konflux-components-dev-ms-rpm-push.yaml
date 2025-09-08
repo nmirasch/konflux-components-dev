@@ -50,8 +50,8 @@ spec:
       #!/usr/bin/env bash
       set -euxo pipefail
       
-      echo "--- Preparing to access source artifact ---"
-      echo "--- SOURCE_ARTIFACT_URL: ${SOURCE_ARTIFACT_URL} ---"
+      echo "--- Preparing to access source artifact --- "
+      echo "--- SOURCE_ARTIFACT_URL: ${SOURCE_ARTIFACT_URL} --- "
       echo "--- cat microshift-gitops.spec: ---"
       
       cat microshift-gitops.spec
@@ -59,8 +59,6 @@ spec:
       CLEAN_SOURCE_URL=${SOURCE_ARTIFACT_URL#oci:}
       
       echo "Waiting for manifest to be available for ${CLEAN_SOURCE_URL}..."
-      
-  
   pipelineRef:
     resolver: git
     params:
