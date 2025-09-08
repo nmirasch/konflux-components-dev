@@ -125,5 +125,5 @@ spec:
       secretName: '{{ git_auth_secret }}'
   - name: registry-auth
     secret:
-      secretName: nmirach-quay
+      secretName: nmirasch-quay
 status: {}
