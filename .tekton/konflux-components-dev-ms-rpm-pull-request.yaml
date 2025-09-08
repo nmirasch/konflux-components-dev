@@ -122,4 +122,7 @@ spec:
   - name: git-auth
     secret:
       secretName: '{{ git_auth_secret }}'
+  - name: registry-auth
+    secret:
+      secretName: nmirasch-quay
 status: {}
