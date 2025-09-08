@@ -51,7 +51,7 @@ spec:
       #!/usr/bin/env bash
       set -euxo pipefail
       
-      echo "--- Preparing to access source artifact CH7--- "
+      echo "--- Preparing to access source artifact CH1--- "
       echo "--- SOURCE_ARTIFACT_URL: ${SOURCE_ARTIFACT_URL} --- "
       echo "--- cat microshift-gitops.spec: ---"
       
