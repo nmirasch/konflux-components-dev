@@ -50,16 +50,18 @@ spec:
       #!/usr/bin/env bash
       set -euxo pipefail
       
-      echo "--- Preparing to generate spec and sources using Skopeo   ---"
+      echo "--- Preparing to generate spec and sources using Skopeo  ---"
       echo "--- SOURCE_ARTIFACT_URL ${SOURCE_ARTIFACT_URL}  ---"
       
       CLEAN_SOURCE_URL=${SOURCE_ARTIFACT_URL#oci:}
+      URL_WITH_GIT_SUFFIX=$(echo "${CLEAN_SOURCE_URL}" | sed 's|@|.git@|')
+      echo "Corrected artifact URL for inspection: ${URL_WITH_GIT_SUFFIX}"
       
-      echo "Waiting for manifest to be available for ${CLEAN_SOURCE_URL}..."
+      echo "Waiting for manifest to be available for ${URL_WITH_GIT_SUFFIX}..."
       
       # Retry for up to 2 minutes to solve registry race conditions
       for i in {1..12}; do
-        if skopeo inspect "docker://${CLEAN_SOURCE_URL}" > /dev/null; then
+        if skopeo inspect "docker://${URL_WITH_GIT_SUFFIX}" > /dev/null; then
           echo "Manifest is now available!"
           break # Exit the loop and continue the script
         fi
