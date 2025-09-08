@@ -126,5 +126,5 @@ spec:
       secretName: '{{ git_auth_secret }}'
   - name: registry-auth
     secret:
-      secretName: appstudio-pipeline-dockercfg-wpvwk
+      secretName: nmirasch-quay
 status: {}
