@@ -71,13 +71,10 @@ spec:
   taskRunTemplate:
     serviceAccountName: build-pipeline-konflux-components-dev-ms-rpm
   workspaces:
-  - name: source-workspace
+  - name: workdir
     persistentVolumeClaim:
       claimName: "{{pvc_name}}"
   - name: git-auth
     secret:
       secretName: '{{ git_auth_secret }}'
-  - name: registry-auth
-    secret:
-      secretName: nmirasch-quay
 status: {}
