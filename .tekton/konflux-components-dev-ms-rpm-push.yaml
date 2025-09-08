@@ -50,7 +50,7 @@ spec:
       #!/usr/bin/env bash
       set -euxo pipefail
       
-      echo "--- Preparing to generate spec and sources using Skopeo  ---"
+      echo "--- Preparing to generate spec and sources using Skopeo   ---"
       echo "--- SOURCE_ARTIFACT_URL ${SOURCE_ARTIFACT_URL}  ---"
       
       CLEAN_SOURCE_URL=${SOURCE_ARTIFACT_URL#oci:}

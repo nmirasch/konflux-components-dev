@@ -72,7 +72,7 @@ spec:
         sleep 10
       done
       
-      echo "--- Preparing to generate spec and sources using Skopeo ---"
+      echo "--- Preparing to generate spec and sources using Skopeo  ---"
       
       mkdir -p original-repo
       skopeo copy "docker://${CLEAN_SOURCE_URL}" "dir:./original-repo"
