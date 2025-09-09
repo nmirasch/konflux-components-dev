@@ -55,7 +55,9 @@ spec:
       echo "--- SOURCE_ARTIFACT_URL: ${SOURCE_ARTIFACT_URL} --- "
       echo "--- cat microshift-gitops.spec: ---"
       
-      cat microshift-gitops.spec
+      #cat microshift-gitops.spec
+      ls -la
+      pwd
       
       CLEAN_SOURCE_URL=${SOURCE_ARTIFACT_URL#oci:}
       
