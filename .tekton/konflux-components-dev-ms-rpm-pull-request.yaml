@@ -51,7 +51,7 @@ spec:
       #!/usr/bin/env bash
       set -euxo pipefail
       
-      echo "--- Preparing to access source artifact CH9--- "
+      echo "--- Preparing to access source artifact CH9s--- "
       echo "--- SOURCE_ARTIFACT_URL: ${SOURCE_ARTIFACT_URL} --- "
       echo "--- cat microshift-gitops.spec: ---"
       
@@ -72,7 +72,7 @@ spec:
   taskRunTemplate:
     serviceAccountName: build-pipeline-konflux-components-dev-ms-rpm
   workspaces:
-  - name: workdir
+  - name: shared-sources
     persistentVolumeClaim:
       claimName: "{{pvc_name}}"
   - name: git-auth

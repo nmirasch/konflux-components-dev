@@ -71,7 +71,7 @@ spec:
   taskRunTemplate:
     serviceAccountName: build-pipeline-konflux-components-dev-ms-rpm
   workspaces:
-  - name: workdir
+  - name: shared-sources
     persistentVolumeClaim:
       claimName: "{{pvc_name}}"
   - name: git-auth
