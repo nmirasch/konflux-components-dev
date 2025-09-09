@@ -44,16 +44,19 @@ spec:
     value:
     - aarch64
     - x86_64
-  - name: pre-build-script-image
-    value: "quay.io/redhat-user-workloads/nmirasch-tenant/konflux-components-dev-builder@sha256:9efb61c49d241b3597c1289b42ecb5e9ba9de48126bf101c51b93bdadb1215e4"
+#  - name: pre-build-script-image
+#    value: "quay.io/redhat-user-workloads/nmirasch-tenant/konflux-components-dev-builder@sha256:9efb61c49d241b3597c1289b42ecb5e9ba9de48126bf101c51b93bdadb1215e4"
   - name: pre-build-script-content
     value: |
       #!/usr/bin/env bash
       set -euxo pipefail
       
-      echo "--- Init script ---"
-      ./rpms/microshift-gitops/generic-pre-build-script.sh
-      echo "--- End script ---"
+      echo "--- Init script content---"
+      # ./rpms/microshift-gitops/generic-pre-build-script.sh
+      ls -l
+      echo "--- cat microshift-gitops.spec ---"
+      cat microshift-gitops.spec
+      echo "--- End script content ---"
   pipelineRef:
     resolver: git
     params:
