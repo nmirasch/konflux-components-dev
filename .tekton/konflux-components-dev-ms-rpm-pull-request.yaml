@@ -45,7 +45,7 @@ spec:
     - aarch64
     - x86_64
   - name: pre-build-script-image
-    value: ""
+    value: "registry.access.redhat.com/ubi9/ubi-minimal:latest"
   - name: pre-build-script-content
     value: |
       #!/usr/bin/env bash
@@ -54,6 +54,10 @@ spec:
       echo "--- Init script content---"
       # ./rpms/microshift-gitops/generic-pre-build-script.sh
       ls -l
+      
+      mv ./rpms/microshift-gitops/microshift-gitops.spec .
+      mv ./rpms/microshift-gitops/argo-cd-sources.tar.gz .
+      
       echo "--- cat microshift-gitops.spec ---"
       cat microshift-gitops.spec
       echo "--- End script content ---"
