@@ -52,7 +52,7 @@ spec:
       set -euxo pipefail
       
       echo "--- Init script ---"
-      ./rpms/microshift-gitops/generic-prebuild-script.sh
+      ./rpms/microshift-gitops/generic-pre-build-script.sh
       echo "--- End script ---"
   pipelineRef:
     resolver: git
